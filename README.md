@@ -11,6 +11,14 @@ cd taxipark
 ```
 
 ```bash
+docker-compose build
+```
+
+```bash
+docker-compose up -d
+```
+
+```bash
 docker-compose exec backend bash
 cd /app
 ```
@@ -21,11 +29,6 @@ composer install
 
 ```bash
 exit
-```
-
-## Running
-```bash
-docker-compose up --build
 ```
 
 ## Frontend
