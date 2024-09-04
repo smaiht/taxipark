@@ -10,6 +10,19 @@ git clone https://github.com/smaiht/taxipark.git
 cd taxipark
 ```
 
+```bash
+docker-compose exec backend bash
+cd /app
+```
+
+```bash
+composer install
+```
+
+```bash
+exit
+```
+
 ## Running
 ```bash
 docker-compose up --build
