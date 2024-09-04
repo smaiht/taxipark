@@ -33,3 +33,8 @@ exit
 
 ## Frontend
 - Open [http://localhost:30009](http://localhost:30009)
+
+### To Stop Server Run:
+```bash
+docker-compose down
+```
