@@ -1,0 +1,47 @@
+version: "3"
+services:
+    database:
+        build: ./database
+        environment:
+            POSTGRES_DB: taxipark
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: 12121212
+        ports:
+            - "54329:5432"
+        volumes:
+            - database-data:/var/lib/postgresql/data
+
+    backend:
+        build: ./backend
+        environment:
+            - DATABASE_URL=postgresql://root:12121212@database:5432/taxipark
+        volumes:
+            - ./backend:/app
+        depends_on:
+            - database
+        expose:
+            - 9000
+
+    nginx:
+        build: ./nginx
+        ports:
+            - "8009:80"
+        depends_on:
+            - backend
+        volumes:
+            - ./backend:/app
+
+    frontend:
+        build: ./frontend
+        ports:
+            - "30009:3000"
+        environment:
+            - REACT_APP_BACKEND_URL=http://localhost:8009
+            - WDS_SOCKET_HOST=0.0.0.0
+            - WDS_SOCKET_PORT=0
+        depends_on:
+            - backend
+            - nginx
+
+volumes:
+    database-data:
