@@ -1,15 +1,19 @@
 # Taxipark
 
 ## Requirements
-- Docker
-- Docker Compose
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ## Installation
-### `git clone https://github.com/smaiht/taxipark.git`
-### `cd taxipark`
+```bash
+git clone https://github.com/smaiht/taxipark.git
+cd taxipark
+```
 
 ## Running
-### `docker-compose up --build`
+```bash
+docker-compose up --build
+```
 
 ## Frontend
-### open `http://localhost:30009`
+- Open [http://localhost:30009](http://localhost:30009)
