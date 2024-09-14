@@ -1,7 +1,9 @@
 version: "3"
 services:
     database:
-        build: ./database
+        build: 
+            context: ./database
+            dockerfile: Dockerfile
         environment:
             POSTGRES_DB: taxipark
             POSTGRES_USER: root
@@ -12,33 +14,43 @@ services:
             - database-data:/var/lib/postgresql/data
 
     backend:
-        build: ./backend
+        build: 
+            context: ./backend
+            dockerfile: Dockerfile
         environment:
             - DATABASE_URL=postgresql://root:12121212@database:5432/taxipark
         volumes:
-            - ./backend:/app
+            - ./backend:/var/www/html
+            - /var/www/html/vendor
         depends_on:
             - database
         expose:
             - 9000
 
     nginx:
-        build: ./nginx
+        build: 
+            context: ./nginx
+            dockerfile: Dockerfile
         ports:
             - "8009:80"
         depends_on:
             - backend
         volumes:
-            - ./backend:/app
+            - ./backend:/var/www/html
 
     frontend:
-        build: ./frontend
+        build: 
+            context: ./frontend
+            dockerfile: Dockerfile
         ports:
             - "30009:3000"
         environment:
             - REACT_APP_BACKEND_URL=http://localhost:8009
             - WDS_SOCKET_HOST=0.0.0.0
             - WDS_SOCKET_PORT=0
+        volumes:
+            - ./frontend:/var/www/html
+            - /var/www/html/node_modules
         depends_on:
             - backend
             - nginx

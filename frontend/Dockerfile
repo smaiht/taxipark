@@ -1,5 +1,8 @@
 FROM node:22
-COPY . /app
-WORKDIR /app
+
+WORKDIR /var/www/html
+
+COPY . .
 RUN npm install
+
 CMD ["npm", "start"]
