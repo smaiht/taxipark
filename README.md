@@ -36,7 +36,7 @@ docker-compose up --build
 3. Access the application:
 - Frontend: http://localhost:30009
 - Backend API: http://localhost:8009
-To Stop Server Run:
+- To Stop Server Run:
 ~~~
 docker-compose down
 ~~~
