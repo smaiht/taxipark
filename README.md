@@ -4,6 +4,9 @@
 
 This project is a platform for taxi park management. It provides functionalities for adding and editing both drivers and cars, as well as viewing detailed change logs.
 
+https://github.com/user-attachments/assets/25094479-2c1d-46aa-ae82-64175cee8be9
+
+
 ## Technology Stack
 
 - **Backend**: Symfony PHP framework
