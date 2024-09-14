@@ -22,6 +22,14 @@ services:
         volumes:
             - ./backend/var:/var/www/html/var
             - ./backend/public/uploads:/var/www/html/public/uploads
+        command: >
+          bash -c "
+          echo 'Starting container setup...' &&
+          chown -R www-data:www-data /var/www/html/var /var/www/html/public/uploads &&
+          chmod -R 775 /var/www/html/var /var/www/html/public/uploads &&
+          echo 'Setup complete. Starting php...' &&
+          php-fpm
+          "
         depends_on:
             - database
         expose:
