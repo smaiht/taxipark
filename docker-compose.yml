@@ -20,8 +20,8 @@ services:
         environment:
             - DATABASE_URL=postgresql://root:12121212@database:5432/taxipark
         volumes:
-            - ./backend:/var/www/html
-            - /var/www/html/vendor
+            - ./backend/var:/var/www/html/var
+            - ./backend/public/uploads:/var/www/html/public/uploads
         depends_on:
             - database
         expose:
@@ -36,7 +36,7 @@ services:
         depends_on:
             - backend
         volumes:
-            - ./backend:/var/www/html
+            - ./backend/public:/var/www/html/public
 
     frontend:
         build: 
